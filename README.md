@@ -1,4 +1,4 @@
-# Navier-Stokes-CFD
+# Navier Stokes CFD
 Simulateur de mécanique des fluides.  
 
 Capacités actuelles :

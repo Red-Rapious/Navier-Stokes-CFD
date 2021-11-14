@@ -20,7 +20,7 @@ else:
 # Constantes
 nx = 41 # nombre de points
 dx = 2/(nx-1)
-nt = 50 # nombre d'étapes à calculer
+nt = 25 # nombre d'étapes à calculer
 dt = .025 # temps en chaque étape (delta t)
 c = 1 # célérité de l'onde
 

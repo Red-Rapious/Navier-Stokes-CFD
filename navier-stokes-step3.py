@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 """Etape 3 : Diffusion en 1 dimension"""
 
 ANIMATED = True
+CLEAR = False
 
 if ANIMATED:
     fig, axes = plt.subplots(1,1, figsize=(8,8))
@@ -19,7 +20,7 @@ else:
 # Constantes
 nx = 41 # nombre de points
 dx = 2/(nx-1)
-nt = 25 # nombre d'étapes à calculer
+nt = 50 # nombre d'étapes à calculer
 nu = .3 # viscosité
 sigma = .2 # TODO
 dt = sigma * dx**2 / nu # temps en chaque étape, dépendant de sigma et de la viscosité (delta t)
@@ -32,6 +33,7 @@ u[int(.5/dx):int(1/dx+1)]=2 # niveau haut (entre .5 et 1)
 # Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
 u_n = np.ones(nx)
 
+plt.pause(6)
 for n in range(nt): # nombre d'étapes temporelles
     u_n = u.copy()
     for i in range(1, nx-1): 
@@ -39,7 +41,8 @@ for n in range(nt): # nombre d'étapes temporelles
         u[i] = u_n[i] + nu * dt / dx**2 * (u_n[i+1] - 2* u_n[i] + u_n[i-1])
     
     if ANIMATED:
-        axes.clear()
+        if CLEAR:
+            axes.clear()
         axes.plot(np.linspace(0,2,nx), u)
         plt.pause(dt)
     else:

@@ -33,7 +33,7 @@ u[int(.5/dx):int(1/dx+1)]=2 # niveau haut (entre .5 et 1)
 # Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
 u_n = np.ones(nx)
 
-plt.pause(6)
+
 for n in range(nt): # nombre d'étapes temporelles
     u_n = u.copy()
     for i in range(1, nx-1): 

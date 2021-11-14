@@ -9,7 +9,7 @@ from sympy.utilities.lambdify import lambdify
 import matplotlib.pyplot as plt
 
 """Etape 4 : Equation de Burgers"""
-ANIMATED = True
+ANIMATED = False
 if ANIMATED:
     fig, axes = plt.subplots(figsize=(11,7), dpi=100)
     axes.set_title("Signal en dents de scie")

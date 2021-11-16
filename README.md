@@ -12,6 +12,8 @@ Les 3 programmes possèdent un mode animé, chronographie, et état final
 Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 ## Exemples :
+![Convection linéaire en 2 dimensions](Images/animation-step5.gif "Convection linéaire en 2 dimensions")
+
 ![Convection linéaire en 1 dimension](Images/screenshot1.PNG?raw=true "Convection linéaire en 1 dimension")
 
 ![Convection non-linéaire en 1 dimension](Images/screenshot2.PNG?raw=true "Convection non-linéaire en 1 dimension")

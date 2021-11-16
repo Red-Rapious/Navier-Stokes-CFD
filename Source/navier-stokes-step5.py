@@ -7,11 +7,12 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import cm
-from matplotlib.animation import FuncAnimation 
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 5 : Convection linéaire en 2 dimensions"""
 
 BLIT = False # ne marche pas avec True
+SAVE = False
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
@@ -75,7 +76,9 @@ def animate(n):
     return surf,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
-
+if SAVE:
+    writergif = PillowWriter(fps=30)
+    anim.save('Images/animation-step5.gif', writer=writergif)
 
 """
 for n in range(nt):

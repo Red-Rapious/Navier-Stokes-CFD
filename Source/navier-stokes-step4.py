@@ -12,7 +12,7 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 4 : Equation de Burgers"""
 BLIT = False
-SAVE = True
+SAVE = False
 
 fig, axes = plt.subplots(figsize=(11,7), dpi=100)
 axes.set_title("Signal en dents de scie")

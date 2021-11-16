@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 1 : Convection linéaire en 1 dimension - version animée avec matplotlib"""
-
 BLIT = False
 SAVE = False
 

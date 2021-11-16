@@ -9,7 +9,6 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 
 """Etape 3 : Diffusion en 1 dimension"""
-
 BLIT = False
 SAVE = False
 

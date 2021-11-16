@@ -11,10 +11,10 @@ from matplotlib.animation import FuncAnimation
 
 """Etape 5 : Convection linéaire en 2 dimensions"""
 
-BLIT = True
+BLIT = False
 
 fig = plt.figure(dpi=100, figsize=(8,8))
-axes = fig.gca(projection='3d')
+axes = fig.add_subplot(projection='3d')
 axes.set_title("Animation de déplacement d'une vague en 2 dimensions à convection linéaire")
 
 
@@ -42,10 +42,9 @@ u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1
 u_n = np.ones((ny, nx))
 #line, = axes.plot(np.linspace(0,2,nx), u)
 
-#surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
-surf2 = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
+surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
 
-"""
+
 # Animation 
 def animate(n):
     global u_n
@@ -54,7 +53,7 @@ def animate(n):
 
     u_n = u.copy()
 
-    #row, col = u.shape
+    row, col = u.shape
     #for j in range(1, row):
     #    for i in range(1, col):
     #        u[j,i] = (u_n[j,i] - (c*dt/dx*(u_n[j,i]-u_n[j, i-1]))- (c*dt/dy*(u_n[j,i]-u_n[j-1, i])))
@@ -67,13 +66,19 @@ def animate(n):
     u[-1, :] = 1
     u[:, 0] = 1
     u[:, -1] = 1
-    surf2 = axes.plot_surface(X, Y, u[:], cmap=cm.viridis)
-    return surf2,
+    axes.clear()
+    surf = axes.plot_surface(X, Y, u[:], cmap=cm.viridis)
+    # code pour éviter une erreur de matplotlib ; j'ai vraiment aucune idée de ce que c'est, je l'ai juste copy-paste de stackoverflow
+    surf._facecolors2d = surf._facecolor3d
+    surf._edgecolors2d = surf._edgecolor3d
+
+    print(n)
+    return surf,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+
+
 """
-
-
 for n in range(nt):
     u_n = u.copy()
     row, col = u.shape
@@ -93,7 +98,7 @@ for n in range(nt):
 
     axes.clear()
     surf2 = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
-    plt.pause(dt/100)
-
+    plt.pause(dt)
+"""
 
 plt.show()

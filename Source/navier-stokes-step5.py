@@ -11,7 +11,7 @@ from matplotlib.animation import FuncAnimation
 
 """Etape 5 : Convection linéaire en 2 dimensions"""
 
-BLIT = False
+BLIT = False # ne marche pas avec True
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
@@ -72,7 +72,6 @@ def animate(n):
     surf._facecolors2d = surf._facecolor3d
     surf._edgecolors2d = surf._edgecolor3d
 
-    print(n)
     return surf,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)

@@ -6,6 +6,7 @@ Capacités actuelles :
 * Convection non-linéaire en 1 dimension  
 * Diffusion en 1 dimension
 * Equation du Burgers et signal en dents de scie
+* Convection linéaire en 2 dimensions
 
 Les 3 programmes possèdent un mode animé, chronographie, et état final
 

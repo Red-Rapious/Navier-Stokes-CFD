@@ -5,11 +5,12 @@ Référence : lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 2 : Convection non-linéaire en 1 dimension - version animée avec matplotlib"""
 
 BLIT = False
+SAVE = False
 
 fig, axes = plt.subplots(1,1, figsize=(8,8))
 axes.set_title("Animation de déplacement d'une vague en 1 dimension à convection non linéaire") # ne marche pas, ni pour plt, ni pour axes, ni pour fig
@@ -42,5 +43,8 @@ def animate(n):
     return line,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+if SAVE:
+    writergif = PillowWriter(fps=30)
+    anim.save('Images/animation-step2.gif', writer=writergif)
 
 plt.show()

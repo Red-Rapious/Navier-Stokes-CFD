@@ -12,7 +12,7 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 """Etape 5 : Convection linéaire en 2 dimensions"""
 
 BLIT = False # ne marche pas avec True
-SAVE = False
+SAVE = True
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
@@ -22,7 +22,7 @@ axes.set_title("Animation de déplacement d'une vague en 2 dimensions à convect
 # Constantes
 nx = 81 # nombre de points en x
 ny = 81 # nombre de points en y
-nt = 100 # nombre d'étapes à calculer
+nt = 180 # nombre d'étapes à calculer
 dx = 2/(nx-1)
 dy = 2/(ny-1)
 sigma = .2
@@ -79,28 +79,5 @@ anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
 if SAVE:
     writergif = PillowWriter(fps=30)
     anim.save('Images/animation-step5.gif', writer=writergif)
-
-"""
-for n in range(nt):
-    u_n = u.copy()
-    row, col = u.shape
-    
-    #for j in range(1, row):
-    #    for i in range(1, col):
-    #        u[j,i] = (u_n[j,i] - (c*dt/dx*(u_n[j,i]-u_n[j, i-1]))- (c*dt/dy*(u_n[j,i]-u_n[j-1, i])))
-            
-    # même effet que les boucles commentées, en plus élégant
-    u[1:, 1:] = (u_n[1:, 1:] - (c*dt/dx*(u_n[1:, 1:]-u_n[1:, :-1])) - (c*dt/dy*(u_n[1:, 1:] - u_n[:-1, 1:])))
-            
-    # conditions aux bords
-    u[0, :] = 1
-    u[-1, :] = 1
-    u[:, 0] = 1
-    u[:, -1] = 1
-
-    axes.clear()
-    surf2 = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
-    plt.pause(dt)
-"""
 
 plt.show()

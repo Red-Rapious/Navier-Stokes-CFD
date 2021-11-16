@@ -5,12 +5,13 @@ Référence : lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation 
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 
 """Etape 3 : Diffusion en 1 dimension"""
 
 BLIT = False
+SAVE = False
 
 fig, axes = plt.subplots(1,1, figsize=(8,8))
 axes.set_title("Animation de la diffusion d'une vague en 1 dimension") # ne marche pas, ni pour plt, ni pour axes, ni pour fig
@@ -18,7 +19,7 @@ axes.set_title("Animation de la diffusion d'une vague en 1 dimension") # ne marc
 # Constantes
 nx = 41 # nombre de points
 dx = 2/(nx-1)
-nt = 50 # nombre d'étapes à calculer
+nt = 100 # nombre d'étapes à calculer
 nu = .3 # viscosité
 sigma = .2 # TODO
 dt = sigma * dx**2 / nu # temps en chaque étape, dépendant de sigma et de la viscosité (delta t)
@@ -45,5 +46,8 @@ def animate(n):
     return line,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+if SAVE:
+    writergif = PillowWriter(fps=30)
+    anim.save('Images/animation-step3.gif', writer=writergif)
 
 plt.show()

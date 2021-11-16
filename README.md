@@ -12,12 +12,18 @@ Les 3 programmes possèdent un mode animé, chronographie, et état final
 Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 ## Exemples :
-![Convection linéaire en 2 dimensions](Images/animation-step5.gif "Convection linéaire en 2 dimensions")
 
-![Convection linéaire en 1 dimension](Images/screenshot1.PNG?raw=true "Convection linéaire en 1 dimension")
+Step 5 - Convection linéaire en 2 dimensions
+![Convection linéaire en 2 dimensions](Images/animation-step5.gif)
 
-![Convection non-linéaire en 1 dimension](Images/screenshot2.PNG?raw=true "Convection non-linéaire en 1 dimension")
+Step 1 - Convection linéaire en 1 dimension
+![Convection linéaire en 1 dimension](Images/animation-step1.gif)
 
-![Diffusion en 1 dimension](Images/screenshot3.PNG?raw=true "Diffusion en 1 dimension")
+Step 2- Convection non-linéaire en 1 dimension
+![Convection non-linéaire en 1 dimension](Images/animation-step2.gif)
 
-![Signal en dents de scie](Images/screenshot4.PNG?raw=true "Signal en dents de scie")
+Step 3 - Diffusion en 1 dimension
+![Diffusion en 1 dimension](Images/animation-step3.gif)
+
+Step 4 - Signal en dents de scie
+![Signal en dents de scie](Images/animation-step4.gif)

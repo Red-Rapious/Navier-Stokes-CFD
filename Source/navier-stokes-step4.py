@@ -7,11 +7,12 @@ import numpy as np
 import sympy as sp
 from sympy.utilities.lambdify import lambdify
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation 
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 
 """Etape 4 : Equation de Burgers"""
 BLIT = False
+SAVE = True
 
 fig, axes = plt.subplots(figsize=(11,7), dpi=100)
 axes.set_title("Signal en dents de scie")
@@ -64,5 +65,8 @@ def animate(n):
     return line_computed, line_analytical,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+if SAVE:
+    writergif = PillowWriter(fps=30)
+    anim.save('Images/animation-step4.gif', writer=writergif)
 
 plt.show()

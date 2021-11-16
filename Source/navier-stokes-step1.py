@@ -5,11 +5,12 @@ Référence : lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation 
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 1 : Convection linéaire en 1 dimension - version animée avec matplotlib"""
 
 BLIT = False
+SAVE = False
 
 fig, axes = plt.subplots(1,1, figsize=(8,8))
 axes.set_title("Animation de déplacement d'une vague en 1 dimension à convection linéaire")
@@ -18,7 +19,7 @@ axes.set_title("Animation de déplacement d'une vague en 1 dimension à convecti
 # Constantes
 nx = 41 # nombre de points
 dx = 2/(nx-1)
-nt = 25 # nombre d'étapes à calculer
+nt = 50 # nombre d'étapes à calculer
 dt = .025 # temps en chaque étape (delta t)
 c = 1 # célérité de l'onde
 
@@ -43,5 +44,8 @@ def animate(n):
     return line,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+if SAVE:
+    writergif = PillowWriter(fps=30)
+    anim.save('Images/animation-step1.gif', writer=writergif)
 
 plt.show()

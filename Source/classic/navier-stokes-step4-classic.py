@@ -7,14 +7,14 @@ import numpy as np
 import sympy as sp
 from sympy.utilities.lambdify import lambdify
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation 
-
 
 """Etape 4 : Equation de Burgers"""
-BLIT = False
-
-fig, axes = plt.subplots(figsize=(11,7), dpi=100)
-axes.set_title("Signal en dents de scie")
+ANIMATED = False
+if ANIMATED:
+    fig, axes = plt.subplots(figsize=(11,7), dpi=100)
+    axes.set_title("Signal en dents de scie")
+else:
+    plt.figure(figsize=(11,7), dpi=100)
 
 # Calcul et dérivation des fonctions
 x, nu, t = sp.symbols('x nu t')
@@ -43,26 +43,30 @@ plt.xlim([0, 2*np.pi])
 # on n'a alors besoin de tracer la fonction que sur [0, 2pi]
 plt.ylim([0, 10])
 
-u_analytical = np.asarray([ufunc(nt*dt, xi, nu) for xi in x])
-
-line_computed, = axes.plot(np.linspace(0,2,nx), u)
-line_analytical, = axes.plot(x, u_analytical)
-
-# Animation 
-def animate(n):
-    global u_n
-    global line
-
+# solution approchée
+for n in range(nt): # nombre d'étapes temporelles
     u_n = u.copy()
     for i in range(1, nx-1): 
         # on commence à 1 car u_n dépend de u_n-1 ; on finit à u_n -1 car u_n dépend de u_n+1
         u[i] = u_n[i] - u_n[i] * dt / dx *(u_n[i] - u_n[i-1]) + nu * dt / dx**2 *(u_n[i+1] - 2 * u_n[i] + u_n[i-1])
     u[0]=u_n[0]-u_n[0]*dt/dx * (u_n[0]-u_n[-2]) + nu*dt/dx**2 *(u_n[1]-2*u_n[0]+u_n[-2])
     u[-1]=u[0]
-    line_computed.set_data(x, u)
-    line_analytical.set_data(x, [ufunc(n*dt, xi, nu) for xi in x])
-    return line_computed, line_analytical,
+    if ANIMATED:
+        u_analytical = np.asarray([ufunc(n*dt, xi, nu) for xi in x])
+        axes.clear()
+        axes.plot(x,u,marker='o', lw=2, label="Approchée")
+        axes.plot(x, u_analytical, label='Exacte')
+        plt.pause(dt)
 
-anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)
+# solution exacte
+if not ANIMATED:
+    u_analytical = np.asarray([ufunc(nt*dt, xi, nu) for xi in x])
+
+# Tracé des deux solutions
+if not ANIMATED:
+    plt.plot(x,u,marker='o', lw=2, label="Approchée")
+    plt.plot(x, u_analytical, label='Exacte')
+    plt.title("Signal en dents de scie")
+    plt.legend()
 
 plt.show()

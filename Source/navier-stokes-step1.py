@@ -9,7 +9,7 @@ from matplotlib.animation import FuncAnimation
 
 """Etape 1 : Convection linéaire en 1 dimension - version animée avec matplotlib"""
 
-BLIT = True
+BLIT = False
 
 fig, axes = plt.subplots(1,1, figsize=(8,8))
 axes.set_title("Animation de déplacement d'une vague en 1 dimension à convection linéaire")

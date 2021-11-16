@@ -15,7 +15,7 @@ SAVE = False
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
-axes.set_title("Animation de déplacement d'une vague en 2 dimensions à convection linéaire")
+fig.suptitle("Animation de déplacement d'une vague en 2 dimensions à convection linéaire")
 
 
 # Constantes

@@ -20,6 +20,9 @@ Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-t
 ### Step 6 - Convection non linéaire en 2 dimensions
 ![Convection non linéaire en 2 dimensions](Images/animation-step6.gif)
 
+### Step 7 - Diffusion en 2 dimensions
+![Diffusion en 2 dimensions](Images/animation-step7.gif)
+
 ### Step 1 - Convection linéaire en 1 dimension
 ![Convection linéaire en 1 dimension](Images/animation-step1.gif)
 

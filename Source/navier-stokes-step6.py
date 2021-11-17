@@ -11,8 +11,7 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 6 : Convection non linéaire en 2 dimensions"""
 BLIT = False # ne marche pas avec True
-SAVE = False
-SAVE = False
+SAVE = True
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
@@ -43,6 +42,7 @@ v[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1
 
 axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2)
 
+
 # Animation 
 def animate(n):
     u_n = u.copy()
@@ -71,6 +71,8 @@ def animate(n):
 
     axes.set_xlabel("$x$")
     axes.set_ylabel("$y$")
+
+    axes.set_zlim(1,2.0)
 
     return surf,
 

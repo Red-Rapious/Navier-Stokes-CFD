@@ -11,7 +11,7 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 7 : Diffusion en 2 dimensions"""
 BLIT = False # ne marche pas avec True
-SAVE = True
+SAVE = False
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')

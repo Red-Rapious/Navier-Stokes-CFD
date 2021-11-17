@@ -12,7 +12,7 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 """Etape 6 : Convection non linéaire en 2 dimensions"""
 BLIT = False # ne marche pas avec True
 SAVE = False
-SAVE = True
+SAVE = False
 
 fig = plt.figure(dpi=100, figsize=(8,8))
 axes = fig.add_subplot(projection='3d')
@@ -34,7 +34,6 @@ y = np.linspace(0, 2, ny)
 
 X, Y = np.meshgrid(x, y)
 
-
 # Création du signal créneau, conditions initiales
 u = np.ones((ny, nx)) # niveau bas ; u est un vecteur de taille 1 sur n
 u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1 et ;5<=y<=1 (simultanément)
@@ -42,20 +41,10 @@ u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1
 v = np.ones((ny, nx)) # niveau bas ; u est un vecteur de taille 1 sur n
 v[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1 et ;5<=y<=1 (simultanément)
 
-# Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
-u_n = np.ones((ny, nx))
-v_n = np.ones((ny, nx))
-#line, = axes.plot(np.linspace(0,2,nx), u)
-
-surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2)
-
+axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2)
 
 # Animation 
 def animate(n):
-    global u_n
-    global u
-    global line
-
     u_n = u.copy()
     v_n = v.copy()
 
@@ -76,11 +65,12 @@ def animate(n):
 
     axes.clear()
     surf = axes.plot_surface(X, Y, u[:], cmap=cm.viridis)
-    axes.set_xlabel("$x$")
-    axes.set_ylabel("$y$")
     # code pour éviter une erreur de matplotlib ; j'ai vraiment aucune idée de ce que c'est, je l'ai juste copy-paste de stackoverflow
     surf._facecolors2d = surf._facecolor3d
     surf._edgecolors2d = surf._edgecolor3d
+
+    axes.set_xlabel("$x$")
+    axes.set_ylabel("$y$")
 
     return surf,
 

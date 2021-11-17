@@ -42,12 +42,7 @@ u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1
 v = np.ones((ny, nx)) # niveau bas ; u est un vecteur de taille 1 sur n
 v[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1 et ;5<=y<=1 (simultanément)
 
-# Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
-u_n = np.ones((ny, nx)) # TODO: clean useless code everywhere
-v_n = np.ones((ny, nx))
-comb = np.ones((ny, nx))
 
-# TODO: useless
 surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2, linewidth=0, antialiased=False)
 
 axes.set_xlim(0,2)

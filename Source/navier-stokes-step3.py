@@ -28,15 +28,10 @@ u = np.ones(nx) # niveau bas
 u[int(.5/dx):int(1/dx+1)]=2 # niveau haut (entre .5 et 1)
 # u=2 entre .5 et 1
 
-# Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
-u_n = np.ones(nx)
 line, = axes.plot(np.linspace(0,2,nx), u)
 
 # Animation 
 def animate(n):
-    global u_n
-    global line
-
     u_n = u.copy()
     for i in range(1, nx-1): 
         # on commence à 1 car u_n dépend de u_n-1 ; on finit à u_n -1 car u_n dépend de u_n+1

@@ -15,7 +15,7 @@ BLIT = False
 SAVE = False
 
 fig, axes = plt.subplots(figsize=(11,7), dpi=100)
-axes.set_title("Signal en dents de scie")
+axes.set_title("Equation de Burgers en 1 dimension")
 
 # Calcul et dérivation des fonctions
 x, nu, t = sp.symbols('x nu t')
@@ -34,7 +34,6 @@ dt = dx*nu # intervalle de temps
 
 # Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
 x=np.linspace(0, 2*np.pi, nx)
-u_n = np.empty(nx)
 t=0
 u= np.asarray([ufunc(t, x0, nu) for x0 in x])
 
@@ -51,9 +50,6 @@ line_analytical, = axes.plot(x, u_analytical)
 
 # Animation 
 def animate(n):
-    global u_n
-    global line
-
     u_n = u.copy()
     for i in range(1, nx-1): 
         # on commence à 1 car u_n dépend de u_n-1 ; on finit à u_n -1 car u_n dépend de u_n+1

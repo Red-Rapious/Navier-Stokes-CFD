@@ -33,9 +33,6 @@ line, = axes.plot(np.linspace(0,2,nx), u)
 
 # Animation 
 def animate(n):
-    global u_n
-    global line
-
     u_n = u.copy()
     for i in range(1, nx): # on commence à 1 car u_n dépend de u_n-1
         u[i] = u_n[i] - c*dt/dx*(u_n[i] - u_n[i-1])

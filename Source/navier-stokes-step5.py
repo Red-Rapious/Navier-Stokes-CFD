@@ -47,13 +47,9 @@ surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
 
 # Animation 
 def animate(n):
-    global u_n
-    global u
-    global line
-
     u_n = u.copy()
 
-    row, col = u.shape
+    #row, col = u.shape
     #for j in range(1, row):
     #    for i in range(1, col):
     #        u[j,i] = (u_n[j,i] - (c*dt/dx*(u_n[j,i]-u_n[j, i-1]))- (c*dt/dy*(u_n[j,i]-u_n[j-1, i])))

@@ -39,8 +39,7 @@ u = np.ones((ny, nx)) # niveau bas ; u est un vecteur de taille 1 sur n
 u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1 et ;5<=y<=1 (simultanément)
 
 # Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
-u_n = np.ones((ny, nx))
-surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2, linewidth=0, antialiased=False)
+axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2, linewidth=0, antialiased=False)
 
 axes.set_xlim(0,2)
 axes.set_ylim(0,2)
@@ -48,9 +47,6 @@ axes.set_zlim(1,2.5)
 
 # Animation 
 def animate(n):
-    global u_n
-    global u
-
     u_n = u.copy()
 
     u[1:-1, 1:-1] = (u_n[1:-1, 1:-1] + (nu*dt/ dx**2 *(u_n[1:-1, 2:] - 2*u_n[1:-1, 1:-1] + u_n[1:-1, 0:-2])) + (nu*dt/ dy**2 *(u_n[2:, 1:-1] - 2*u_n[1:-1, 1:-1] + u_n[0:-2, 1:-1])))  

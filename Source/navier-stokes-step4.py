@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 
-"""Etape 4 : Equation de Burgers"""
+"""Etape 4 : Equation de Burgers en 1 dimension"""
 BLIT = False
 SAVE = False
 

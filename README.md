@@ -7,6 +7,9 @@ Capacités actuelles :
 * Diffusion en 1 dimension
 * Equation du Burgers et signal en dents de scie
 * Convection linéaire en 2 dimensions
+* Convection non linéaire en 2 dimensions
+* Equation de Burgers en 2 dimensions
+* Equation de Laplace en 2 dimensions
 
 Les 3 programmes possèdent un mode animé, chronographie, et état final
 
@@ -22,6 +25,9 @@ Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-t
 
 ### Step 7 - Diffusion en 2 dimensions
 ![Diffusion en 2 dimensions](Images/animation-step7.gif)
+
+### Step 9 - Equation de Laplace en 2 dimensions
+![Equation de Laplace en 2 dimensions](Images/animation-step9.gif)
 
 ### Step 8 - Equation de Burgers en 2 dimensions
 ![Equation de Burgers en 2 dimensions](Images/animation-step8.gif)

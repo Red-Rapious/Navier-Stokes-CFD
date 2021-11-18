@@ -18,6 +18,7 @@ axes = fig.add_subplot(projection='3d')
 fig.suptitle("Résolution de l'équation de Burgers en 2 dimensions")
 
 
+
 # Constantes
 nx = 41 # nombre de points en x
 ny = 41 # nombre de points en y
@@ -48,12 +49,11 @@ surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis, rstride=2, cstride=2, linew
 axes.set_xlim(0,2)
 axes.set_ylim(0,2)
 axes.set_zlim(1,2.5)
+axes.set_xlabel("$x$")
+axes.set_ylabel("$y$")
 
 # Animation 
 def animate(n):
-    global u_n
-    global u
-
     u_n = u.copy()
     v_n = v.copy()
 

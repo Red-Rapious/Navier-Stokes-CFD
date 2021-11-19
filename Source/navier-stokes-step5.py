@@ -42,6 +42,7 @@ u[int(.5/dy):int(1/dy+1), int(.5/dx):int(1/dx +1)]=2 # niveau haut pour .5<=x<=1
 u_n = np.ones((ny, nx))
 #line, = axes.plot(np.linspace(0,2,nx), u)
 
+axes.text2D(0.40, 0.98, "Temps t="+str(0), transform=axes.transAxes)
 surf = axes.plot_surface(X,Y, u[:], cmap=cm.viridis)
 
 
@@ -68,6 +69,8 @@ def animate(n):
     surf._facecolors2d = surf._facecolor3d
     surf._edgecolors2d = surf._edgecolor3d
 
+    axes.text2D(0.40, 0.98, "Temps t="+str(n), transform=axes.transAxes)
+    
     return surf,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)

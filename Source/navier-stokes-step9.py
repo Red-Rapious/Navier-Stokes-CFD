@@ -10,7 +10,7 @@ from matplotlib.pyplot import cm
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 9 : Résolution de l'équation de Laplace en 2 dimensions"""
-SAVE = True
+SAVE = False
 TARGET = False
 # le mode TARGET affiche la solution finie où l'intervalle entre deux itérations est plus faible que la target
 # le mode ANIMATION = not TARGET affiche n itérations successives
@@ -66,7 +66,10 @@ if TARGET: # mode target
     surf._facecolors2d = surf._facecolor3d
     surf._edgecolors2d = surf._edgecolor3d
 
+
 if not TARGET:
+    axes.text2D(0.40, 0.98, "Itération "+str(0), transform=axes.transAxes)
+
     # Animation 
     def animate(n):
         p_n = p.copy()
@@ -84,6 +87,8 @@ if not TARGET:
         # code pour éviter une erreur de matplotlib ; j'ai vraiment aucune idée de ce que c'est, je l'ai juste copy-paste de stackoverflow
         surf._facecolors2d = surf._facecolor3d
         surf._edgecolors2d = surf._edgecolor3d
+
+        axes.text2D(0.40, 0.98, "Itération "+str(n), transform=axes.transAxes)
 
     anim = FuncAnimation(fig, animate, frames = iterations, blit = False)
     if SAVE:

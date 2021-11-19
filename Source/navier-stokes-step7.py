@@ -45,6 +45,8 @@ axes.set_xlim(0,2)
 axes.set_ylim(0,2)
 axes.set_zlim(1,2.5)
 
+axes.text2D(0.40, 0.98, "Temps t="+str(0), transform=axes.transAxes)
+
 # Animation 
 def animate(n):
     u_n = u.copy()
@@ -65,6 +67,8 @@ def animate(n):
     # code pour éviter une erreur de matplotlib ; j'ai vraiment aucune idée de ce que c'est, je l'ai juste copy-paste de stackoverflow
     surf._facecolors2d = surf._facecolor3d
     surf._edgecolors2d = surf._edgecolor3d
+
+    axes.text2D(0.40, 0.98, "Temps t="+str(n), transform=axes.transAxes)
 
     return surf,
 

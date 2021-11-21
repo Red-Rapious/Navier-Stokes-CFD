@@ -10,7 +10,7 @@ from matplotlib.pyplot import cm
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 """Etape 10 : Résolution de l'équation de Poisson en 2 dimensions"""
-SAVE = True
+SAVE = False
 
 # Code matplotlib
 fig = plt.figure(dpi=100, figsize=(8,8))
@@ -46,7 +46,6 @@ b[int(3 * ny /4), int(3 * nx /4)] = -100
 
 axes.set_xlabel("$x$")
 axes.set_ylabel("$y$")
-axes.set_zlim(-1.0, 1.0)
 axes.view_init(30, 225)
 surf = axes.plot_surface(X,Y, p[:], cmap=cm.viridis, rstride=2, cstride=2, linewidth=0, antialiased=False)
 
@@ -63,11 +62,10 @@ def animate(n):
     p[:, 0] = 0
     p[:, nx-1] = 0
 
+    axes.clear()
     axes.set_xlabel("$x$")
     axes.set_ylabel("$y$")
-    axes.set_zlim(-1.0, 1.0)
     
-    axes.clear()
     surf = axes.plot_surface(X,Y, p[:], cmap=cm.viridis, rstride=1, cstride=1, linewidth=0, antialiased=False)
     # code pour éviter une erreur de matplotlib ; j'ai vraiment aucune idée de ce que c'est, je l'ai juste copy-paste de stackoverflow
     surf._facecolors2d = surf._facecolor3d

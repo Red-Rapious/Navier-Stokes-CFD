@@ -29,6 +29,9 @@ Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-t
 ### Step 9 - Equation de Laplace en 2 dimensions
 ![Equation de Laplace en 2 dimensions](Images/animation-step9.gif)
 
+### Step 10 - Equation de Poisson en 2 dimensions
+![Equation de Poisson en 2 dimensions](Images/animation-step10.gif)
+
 ### Step 8 - Equation de Burgers en 2 dimensions
 ![Equation de Burgers en 2 dimensions](Images/animation-step8.gif)
 

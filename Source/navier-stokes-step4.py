@@ -47,6 +47,7 @@ u_analytical = np.asarray([ufunc(nt*dt, xi, nu) for xi in x])
 
 line_computed, = axes.plot(np.linspace(0,2,nx), u)
 line_analytical, = axes.plot(x, u_analytical)
+txt = fig.text(0.45, 0.96, "Temps t="+str(0))
 
 # Animation 
 def animate(n):
@@ -58,6 +59,7 @@ def animate(n):
     u[-1]=u[0]
     line_computed.set_data(x, u)
     line_analytical.set_data(x, [ufunc(n*dt, xi, nu) for xi in x])
+    txt.set_text("Temps t="+str(n))
     return line_computed, line_analytical,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)

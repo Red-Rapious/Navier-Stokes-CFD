@@ -29,6 +29,7 @@ u[int(.5/dx):int(1/dx+1)]=2 # niveau haut (entre .5 et 1)
 # Calcul de u en fonction du temps : n et n+1 sont deux instants consécutifs
 u_n = np.ones(nx)
 line, = axes.plot(np.linspace(0,2,nx), u)
+txt = fig.text(0.45, 0.96, "Temps t="+str(0))
 
 # Animation 
 def animate(n):
@@ -36,6 +37,7 @@ def animate(n):
     for i in range(1, nx): # on commence à 1 car u_n dépend de u_n-1
         u[i] = u_n[i] - u_n[i]*dt/dx*(u_n[i] - u_n[i-1])
     line.set_data(np.linspace(0,2,nx), u)
+    txt.set_text("Temps t="+str(n))
     return line,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = BLIT)

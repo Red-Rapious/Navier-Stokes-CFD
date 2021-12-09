@@ -17,6 +17,9 @@ Fondé sur le cours suivant : https://lorenabarba.com/blog/cfd-python-12-steps-t
 
 ## Exemples :
 
+### Step 11 - Résolution de Navier-Stokes dans une cavité
+![Résolution de Navier-Stokes dans une cavité](Images/animation-step11.gif)
+
 ### Step 5 - Convection linéaire en 2 dimensions
 ![Convection linéaire en 2 dimensions](Images/animation-step5.gif)
 

@@ -15,9 +15,9 @@ SAVE = False
 # Constantes
 nx = 41
 ny = 41
-nt = 1000 # nombre d'itérations temporelles
+nt = 800 # nombre d'itérations temporelles
 nit = 50 # nombre d'itérations pour Poisson
-c = 1
+c = 10
 dx = 2 / (nx-1)
 dy = 2 / (ny -1)
 
@@ -58,17 +58,17 @@ def pressure_poisson(p, dx, dy, b):
     
     return p
 
-u = np.zeros((ny, nx))
-v = np.zeros((ny, nx))
-p = np.zeros((ny, nx))
-b = np.zeros((ny, nx))
+u = np.zeros((ny, nx)) # vitesse horizontale
+v = np.zeros((ny, nx)) # vitesse verticale
+p = np.zeros((ny, nx)) # pression
+b = np.zeros((ny, nx)) # intermédiaire de calcul, séparé pour simplifier
 
 fig, axes = plt.subplots(figsize=(11,7), dpi=100)
 axes.set_title("Résolution de l'équation de Navier-Stokes dans une cavité")
 
 # mode contour de matplotlib pour les champs de pression
 ctf = plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)
-plt.colorbar()
+cb=fig.colorbar(ctf)
 #ct = plt.contour(X, Y, p, cmap=cm.viridis)
 
 quiver = plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
@@ -81,7 +81,7 @@ plt.ylabel('Y')
 def animate(n):
     if n%50==0 and SAVE:
         print("Saving, t="+ str(n) + "/" + str(nt))
-    global b, u, v, p
+    global b, u, v, p, cb
     un = u.copy()
     vn = v.copy()
     
@@ -132,17 +132,21 @@ def animate(n):
 
     quiver.remove()
     
+    # tracé de la vitesse
     np = 2
     quiver = plt.quiver(X[::np, ::np], Y[::np, ::np], u[::np, ::np], v[::np, ::np]) # un point sur np (ex : un sur deux)
     plt.xlabel('X')
     plt.ylabel('Y')
 
     txt.set_text("Temps t="+str(n))
+    cb.remove()
+    cb = fig.colorbar(ctf)
     return ctf,
 
 anim = FuncAnimation(fig, animate, frames = nt, interval = dt, blit = False)
 if SAVE:
     writergif = PillowWriter(fps=30)
     anim.save('Images/animation-step11.gif', writer=writergif)
+
 
 plt.show()
